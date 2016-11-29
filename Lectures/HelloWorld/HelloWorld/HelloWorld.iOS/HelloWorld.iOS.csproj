@@ -140,6 +140,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="NameController.cs" />
     <Compile Include="NameListController.cs" />
+    <Compile Include="NameListSource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
