@@ -21,8 +21,8 @@ namespace HelloWorld.iOS
             // If not required for your application you can safely delete this method
             this.Window = new UIWindow(UIScreen.MainScreen.Bounds);
             
-            var controller = new MyViewController();
-		    this.Window.RootViewController = controller;
+            var controller = new NameController();
+		    this.Window.RootViewController = new UINavigationController(controller);
 
             this.Window.MakeKeyAndVisible();
             return true;
