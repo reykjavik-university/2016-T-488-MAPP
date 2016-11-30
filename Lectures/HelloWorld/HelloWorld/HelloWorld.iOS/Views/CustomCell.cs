@@ -50,6 +50,8 @@ namespace HelloWorld.iOS.Views
             this._imageView.Image = UIImage.FromFile(imageName);
             this._nameLabel.Text = name;
             this._yearLabel.Text = year;
+
+            this.Accessory = UITableViewCellAccessory.DisclosureIndicator;
         }
     }
 }

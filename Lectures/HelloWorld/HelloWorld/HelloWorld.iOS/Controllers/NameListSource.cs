@@ -17,9 +17,12 @@ namespace HelloWorld.iOS.Controllers
 
         private List<Person> _personList;
 
-        public NameListSource(List<Person> personList)
+        private Action<int>_onSelectedPerson;
+
+        public NameListSource(List<Person> personList, Action<int> onSelectedPerson)
         {
             this._personList = personList;
+            this._onSelectedPerson = onSelectedPerson;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -40,6 +43,12 @@ namespace HelloWorld.iOS.Controllers
         public override nint RowsInSection(UITableView tableview, nint section)
         {
             return this._personList.Count;
+        }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            tableView.DeselectRow(indexPath, true);
+            this._onSelectedPerson(indexPath.Row);
         }
     }
 }
