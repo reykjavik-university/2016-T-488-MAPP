@@ -3,7 +3,9 @@ using UIKit;
 
 namespace HelloWorld.iOS
 {
-	// The UIApplicationDelegate for the application. This class is responsible for launching the
+    using HelloWorld.iOS.Controllers;
+
+    // The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate

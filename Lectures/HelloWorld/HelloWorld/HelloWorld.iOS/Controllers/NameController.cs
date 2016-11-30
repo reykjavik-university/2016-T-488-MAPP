@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HelloWorld.Model;
 
-namespace HelloWorld.iOS
+namespace HelloWorld.iOS.Controllers
 {
     using CoreGraphics;
 
@@ -45,7 +46,8 @@ namespace HelloWorld.iOS
             greetingButton.TouchUpInside += (sender, args) =>
                 {
                     nameField.ResignFirstResponder();
-                    this._people.Persons.Add(nameField.Text);
+                    var person = new Person() { Name = nameField.Text, BirthYear = 0, ImageName = string.Empty };
+                    this._people.Persons.Add(person);
                     greetingLabel.Text = "Hello " + nameField.Text;
                 };
 
