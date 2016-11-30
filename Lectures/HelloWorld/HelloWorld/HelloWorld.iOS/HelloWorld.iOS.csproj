@@ -138,9 +138,10 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="NameController.cs" />
-    <Compile Include="NameListController.cs" />
-    <Compile Include="NameListSource.cs" />
+    <Compile Include="Controllers\NameController.cs" />
+    <Compile Include="Controllers\NameListController.cs" />
+    <Compile Include="Controllers\NameListSource.cs" />
+    <Compile Include="Views\CustomCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\abraham_lincoln.png" />

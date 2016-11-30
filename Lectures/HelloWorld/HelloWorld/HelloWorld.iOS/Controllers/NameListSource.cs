@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HelloWorld.iOS
+namespace HelloWorld.iOS.Controllers
 {
     using Foundation;
+
+    using HelloWorld.iOS.Views;
+    using HelloWorld.Model;
 
     using UIKit;
 
@@ -12,31 +15,31 @@ namespace HelloWorld.iOS
     {
         public readonly NSString NameListCellId = new NSString("NameListCell");
 
-        private List<string> _nameList;
+        private List<Person> _personList;
 
-        public NameListSource(List<string> nameList)
+        public NameListSource(List<Person> personList)
         {
-            this._nameList = nameList;
+            this._personList = personList;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = tableView.DequeueReusableCell(this.NameListCellId);
+            var cell = (CustomCell)tableView.DequeueReusableCell(this.NameListCellId);
 
             if (cell == null)
             {
-                cell = new UITableViewCell(UITableViewCellStyle.Default, (NSString)this.NameListCellId);
+                cell = new CustomCell((NSString)this.NameListCellId);
             }
 
             int row = indexPath.Row;
-            cell.TextLabel.Text = this._nameList[row];
+            cell.UpdateCell(this._personList[row].Name, this._personList[row].BirthYear.ToString(), this._personList[row].ImageName);
 
             return cell;
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return this._nameList.Count;
+            return this._personList.Count;
         }
     }
 }

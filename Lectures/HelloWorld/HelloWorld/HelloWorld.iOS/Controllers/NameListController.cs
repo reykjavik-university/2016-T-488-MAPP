@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HelloWorld.Model;
 
-namespace HelloWorld.iOS
+namespace HelloWorld.iOS.Controllers
 {
     using UIKit;
     public class NameListController : UITableViewController
     {
-        private List<string> _nameList;
+        private List<Person> _personList;
 
-        public NameListController(List<string> nameList)
+        public NameListController(List<Person> personList)
         {
-            this._nameList = nameList;
+            this._personList = personList;
         }
 
         public override void ViewDidLoad()
@@ -19,7 +20,7 @@ namespace HelloWorld.iOS
             this.View.BackgroundColor = UIColor.White;
             this.Title = "Name list";
 
-            this.TableView.Source = new NameListSource(this._nameList);
+            this.TableView.Source = new NameListSource(this._personList);
         }
     }
 }

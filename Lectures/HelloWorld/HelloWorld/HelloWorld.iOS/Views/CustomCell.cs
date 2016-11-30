@@ -25,10 +25,15 @@ namespace HelloWorld.iOS.Views
                                   {
                                       Font = UIFont.FromName("Cochin-BoldItalic", 22f),
                                       TextColor = UIColor.FromRGB(127, 51, 0),
-                                      BackgroundColor = UIColor.Clear,
                                   };
+            this._yearLabel = new UILabel()
+                                {
+                                    Font = UIFont.FromName("AmericanTypewriter", 12f),
+                                    TextColor = UIColor.FromRGB(38, 127, 0),
+                                    TextAlignment = UITextAlignment.Center,
+                                };
 
-            this.ContentView.AddSubviews(new UIView[] {this._imageView, this._nameLabel});
+            this.ContentView.AddSubviews(new UIView[] {this._imageView, this._nameLabel, this._yearLabel});
         }
 
         public override void LayoutSubviews()
@@ -37,12 +42,14 @@ namespace HelloWorld.iOS.Views
 
             this._imageView.Frame = new CGRect(this.ContentView.Bounds.Width - 60, 5, 33, 33);
             this._nameLabel.Frame = new CGRect(5, 5, this.ContentView.Bounds.Width - 60, 25);
+            this._yearLabel.Frame = new CGRect(100, 25, 100, 20);
         }
 
         public void UpdateCell(string name, string year, string imageName)
         {
             this._imageView.Image = UIImage.FromFile(imageName);
             this._nameLabel.Text = name;
+            this._yearLabel.Text = year;
         }
     }
 }
