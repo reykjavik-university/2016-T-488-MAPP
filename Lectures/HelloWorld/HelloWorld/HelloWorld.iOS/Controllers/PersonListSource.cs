@@ -11,7 +11,7 @@ namespace HelloWorld.iOS.Controllers
 
     using UIKit;
 
-    public class NameListSource : UITableViewSource
+    public class PersonListSource : UITableViewSource
     {
         public readonly NSString NameListCellId = new NSString("NameListCell");
 
@@ -19,7 +19,7 @@ namespace HelloWorld.iOS.Controllers
 
         private Action<int>_onSelectedPerson;
 
-        public NameListSource(List<Person> personList, Action<int> onSelectedPerson)
+        public PersonListSource(List<Person> personList, Action<int> onSelectedPerson)
         {
             this._personList = personList;
             this._onSelectedPerson = onSelectedPerson;

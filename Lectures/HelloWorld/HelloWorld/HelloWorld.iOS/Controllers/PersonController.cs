@@ -8,7 +8,7 @@ namespace HelloWorld.iOS.Controllers
     using CoreGraphics;
 
     using UIKit;
-    public class NameController : UIViewController
+    public class PersonController : UIViewController
     {
         private const int HorizontalMargin = 20;
 
@@ -20,7 +20,7 @@ namespace HelloWorld.iOS.Controllers
 
         private People _people;
 
-        public NameController()
+        public PersonController()
         {
             this._people = new People();
         }
@@ -54,7 +54,7 @@ namespace HelloWorld.iOS.Controllers
             navigateButton.TouchUpInside += (sender, args) =>
             {
                 nameField.ResignFirstResponder();
-                this.NavigationController.PushViewController(new NameListController(this._people.Persons), true);
+                this.NavigationController.PushViewController(new PersonListController(this._people.Persons), true);
             };
             this.View.AddSubview(prompt);
             this.View.AddSubview(nameField);

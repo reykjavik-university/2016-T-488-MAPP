@@ -138,9 +138,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Controllers\NameController.cs" />
-    <Compile Include="Controllers\NameListController.cs" />
-    <Compile Include="Controllers\NameListSource.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\PersonListController.cs" />
+    <Compile Include="Controllers\PersonListSource.cs" />
     <Compile Include="Views\CustomCell.cs" />
   </ItemGroup>
   <ItemGroup>
