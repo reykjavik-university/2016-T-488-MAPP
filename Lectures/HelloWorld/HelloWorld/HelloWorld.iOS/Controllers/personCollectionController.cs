@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HelloWorld.iOS.Controllers
 {
+    using HelloWorld.iOS.Views;
     using HelloWorld.Model;
 
     using UIKit;
@@ -20,9 +21,15 @@ namespace HelloWorld.iOS.Controllers
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            this.View.BackgroundColor = UIColor.White;
             this.Title = "Collection";
+
+            this.CollectionView.BackgroundColor = UIColor.White;
+            this.CollectionView.ContentSize = this.View.Frame.Size;
+            this.CollectionView.ContentInset = new UIEdgeInsets(10, 10, 10, 10);
+            
+            this.CollectionView.RegisterClassForCell(typeof(CustomCollectionCell), PersonCollectionSource.PersonCollectionCellId);
+
+            this.CollectionView.DataSource = new PersonCollectionSource(this.__personList);
         }
     }
 }
