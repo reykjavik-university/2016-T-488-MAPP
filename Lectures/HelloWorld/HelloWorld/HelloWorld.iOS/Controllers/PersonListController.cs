@@ -6,11 +6,11 @@ using HelloWorld.Model;
 namespace HelloWorld.iOS.Controllers
 {
     using UIKit;
-    public class NameListController : UITableViewController
+    public class PersonListController : UITableViewController
     {
         private List<Person> _personList;
 
-        public NameListController(List<Person> personList)
+        public PersonListController(List<Person> personList)
         {
             this._personList = personList;
         }
@@ -20,7 +20,7 @@ namespace HelloWorld.iOS.Controllers
             this.View.BackgroundColor = UIColor.White;
             this.Title = "Name list";
 
-            this.TableView.Source = new NameListSource(this._personList, OnSelectedPerson);
+            this.TableView.Source = new PersonListSource(this._personList, OnSelectedPerson);
         }
 
         private void OnSelectedPerson(int row)
