@@ -23,8 +23,19 @@ namespace HelloWorld.iOS
             // If not required for your application you can safely delete this method
             this.Window = new UIWindow(UIScreen.MainScreen.Bounds);
             
-            var controller = new PersonController();
-		    this.Window.RootViewController = new UINavigationController(controller);
+            var personController = new PersonController();
+            var personNavigationController = new UINavigationController(personController);
+
+            var personCollectionController = new PersonCollectionController();
+            var personCollectionNavigationController = new UINavigationController(personCollectionController);
+
+            var tabBarController = new TabBarController()
+		                               {
+		                                   ViewControllers = new UIViewController[] { personNavigationController, personCollectionNavigationController }
+		                               };
+
+
+		    this.Window.RootViewController = tabBarController;
 
             this.Window.MakeKeyAndVisible();
             return true;

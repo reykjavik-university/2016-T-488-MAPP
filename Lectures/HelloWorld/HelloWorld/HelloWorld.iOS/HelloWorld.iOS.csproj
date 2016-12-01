@@ -136,6 +136,8 @@
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\PersonCollectionController.cs" />
+    <Compile Include="Controllers\TabBarController.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Controllers\PersonController.cs" />
