@@ -3,7 +3,10 @@ using UIKit;
 
 namespace HelloWorld.iOS
 {
+    using System.Drawing;
+
     using HelloWorld.iOS.Controllers;
+    using HelloWorld.Model;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
@@ -22,11 +25,13 @@ namespace HelloWorld.iOS
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
             this.Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            
-            var personController = new PersonController();
+
+		    var people = new People();
+
+            var personController = new PersonController(people.Persons);
             var personNavigationController = new UINavigationController(personController);
 
-            var personCollectionController = new PersonCollectionController();
+            var personCollectionController = new PersonCollectionController(this.CreateFlowLayout(), people.Persons);
             var personCollectionNavigationController = new UINavigationController(personCollectionController);
 
             var tabBarController = new TabBarController()
@@ -34,12 +39,21 @@ namespace HelloWorld.iOS
 		                                   ViewControllers = new UIViewController[] { personNavigationController, personCollectionNavigationController }
 		                               };
 
-
 		    this.Window.RootViewController = tabBarController;
 
             this.Window.MakeKeyAndVisible();
             return true;
 		}
+
+	    private UICollectionViewFlowLayout CreateFlowLayout()
+	    {
+	        return new UICollectionViewFlowLayout()
+	                   {
+	                       MinimumInteritemSpacing = 5,
+                           MinimumLineSpacing = 5,
+                           ItemSize = new SizeF(80, 80)
+	                   };
+	    }
 
 		public override void OnResignActivation (UIApplication application)
 		{

@@ -18,11 +18,12 @@ namespace HelloWorld.iOS.Controllers
 
         private int _yCoord;
 
-        private People _people;
+        private List<Person> _personList;
+        
 
-        public PersonController()
+        public PersonController(List<Person> personList )
         {
-            this._people = new People();
+            this._personList = personList;
 
             this.TabBarItem = new UITabBarItem(UITabBarSystemItem.Search, 0);
         }
@@ -49,14 +50,14 @@ namespace HelloWorld.iOS.Controllers
                 {
                     nameField.ResignFirstResponder();
                     var person = new Person() { Name = nameField.Text, BirthYear = 0, ImageName = string.Empty };
-                    this._people.Persons.Add(person);
+                    this._personList.Add(person);
                     greetingLabel.Text = "Hello " + nameField.Text;
                 };
 
             navigateButton.TouchUpInside += (sender, args) =>
             {
                 nameField.ResignFirstResponder();
-                this.NavigationController.PushViewController(new PersonListController(this._people.Persons), true);
+                this.NavigationController.PushViewController(new PersonListController(this._personList), true);
             };
             this.View.AddSubview(prompt);
             this.View.AddSubview(nameField);
