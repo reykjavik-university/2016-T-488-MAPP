@@ -9,27 +9,34 @@ using Android.OS;
 
 namespace HelloWorld.Droid
 {
-	[Activity (Label = "HelloWorld.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    using Android.Hardware.Input;
+    using Android.Views.InputMethods;
+
+    [Activity (Theme = "@style/MyTheme", Label = "HelloWorld.Droid", Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
-		int count = 1;
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
 			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+			this.SetContentView (Resource.Layout.Main);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
-			button.Click += delegate {
-				button.Text = string.Format ("{0} clicks!", count++);
-			};
-		}
-	}
+			// Get our UI controls from the loaded layout
+		    var nameEditText = this.FindViewById<EditText>(Resource.Id.nameEditText);
+
+            var greetingTextView = this.FindViewById<TextView>(Resource.Id.greetingTextView);
+
+            var greetingButton = this.FindViewById<Button>(Resource.Id.greetingButton);
+            greetingButton.Click += (sender, args) =>
+                {
+                    var manager = (InputMethodManager)this.GetSystemService(InputMethodService);
+                    manager.HideSoftInputFromWindow(nameEditText.WindowToken, 0);
+
+                    greetingTextView.Text = "Hello " + nameEditText.Text;
+                }; 
+        }
+    }
 }
 
 
