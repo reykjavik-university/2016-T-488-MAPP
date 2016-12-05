@@ -9,7 +9,10 @@ using Android.OS;
 
 namespace HelloWorld.Droid
 {
-	[Activity (Label = "HelloWorld.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    using Android.Hardware.Input;
+    using Android.Views.InputMethods;
+
+    [Activity (Label = "HelloWorld.Droid", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 		protected override void OnCreate (Bundle bundle)
@@ -26,7 +29,12 @@ namespace HelloWorld.Droid
 
             var greetingButton = this.FindViewById<Button>(Resource.Id.greetingButton);
             greetingButton.Click += (sender, args) =>
-                    { greetingTextView.Text = "Hello " + nameEditText.Text; }; 
+                {
+                    var manager = (InputMethodManager)this.GetSystemService(InputMethodService);
+                    manager.HideSoftInputFromWindow(nameEditText.WindowToken, 0);
+
+                    greetingTextView.Text = "Hello " + nameEditText.Text;
+                }; 
         }
     }
 }
