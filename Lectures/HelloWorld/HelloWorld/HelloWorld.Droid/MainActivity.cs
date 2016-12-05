@@ -12,7 +12,7 @@ namespace HelloWorld.Droid
     using Android.Hardware.Input;
     using Android.Views.InputMethods;
 
-    [Activity (Label = "HelloWorld.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity (Theme = "@style/MyTheme", Label = "HelloWorld.Droid", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
 		protected override void OnCreate (Bundle bundle)

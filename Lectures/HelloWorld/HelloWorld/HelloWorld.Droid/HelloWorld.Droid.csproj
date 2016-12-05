@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>6da439fe-b41b-4f71-8008-e54ccf72570e</ProjectGuid>
+    <ProjectGuid>{6DA439FE-B41B-4F71-8008-E54CCF72570E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>HelloWorld.Droid</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -66,6 +66,9 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
 </Project>
