@@ -12,6 +12,10 @@ using Android.Widget;
 
 namespace HelloWorld.Droid
 {
+    using HelloWorld.Model;
+
+    using Newtonsoft.Json;
+
     [Activity(Theme = "@style/MyTheme", Label = "Name list")]
     public class NameListActivity : ListActivity
     {
@@ -19,8 +23,9 @@ namespace HelloWorld.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            var nameList = this.Intent.Extras.GetStringArrayList("nameList") ?? new string[0];
-            this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, nameList);
+            var jsonStr = this.Intent.GetStringExtra("personList");
+            var personList = JsonConvert.DeserializeObject<List<Person>>(jsonStr);
+            this.ListAdapter = new NameListAdapter(this, personList);
             // Create your application here
         }
     }

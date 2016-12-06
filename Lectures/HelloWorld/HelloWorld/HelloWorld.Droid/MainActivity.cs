@@ -16,6 +16,8 @@ namespace HelloWorld.Droid
     using Android.Views.InputMethods;
     using HelloWorld.Model;
 
+    using Newtonsoft.Json;
+
     [Activity (Theme = "@style/MyTheme", Label = "HelloWorld.Droid", Icon = "@drawable/icon")]
 	public class MainActivity : Activity
     {
@@ -48,7 +50,7 @@ namespace HelloWorld.Droid
             nameListButton.Click += (sender, args) =>
             {
                 var intent = new Intent(this, typeof(NameListActivity));
-                intent.PutStringArrayListExtra("nameList", this._people.Persons.Select(p => p.Name).ToArray());
+                intent.PutExtra("personList", JsonConvert.SerializeObject(this._people.Persons));
                 this.StartActivity(intent);  
             };
         }
