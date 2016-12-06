@@ -25,11 +25,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Greet me" />
-  <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/greetingTextView"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+    <Button
+        android:id="@+id/nameListButton"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="See name list" />
 </LinearLayout>
