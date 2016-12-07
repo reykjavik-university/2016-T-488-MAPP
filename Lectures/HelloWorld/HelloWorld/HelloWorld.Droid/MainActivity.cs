@@ -1,58 +1,41 @@
-﻿using System;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Android.OS;
 
 namespace HelloWorld.Droid
 {
-    using System.Linq;
-
-    using Android.Hardware.Input;
-    using Android.Provider;
-    using Android.Views.InputMethods;
-    using HelloWorld.Model;
-
-    using Newtonsoft.Json;
+    using Android.Support.Design.Widget;
+    using Android.Support.V4.App;
+    using Android.Support.V4.View;
 
     [Activity (Theme = "@style/MyTheme", Label = "HelloWorld.Droid", Icon = "@drawable/icon")]
-	public class MainActivity : Activity
+	public class MainActivity : FragmentActivity
     {
-        private People _people;
-
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-            this._people = new People();
-
+            
 			// Set our view from the "main" layout resource
 			this.SetContentView (Resource.Layout.Main);
 
-			// Get our UI controls from the loaded layout
-		    var nameEditText = this.FindViewById<EditText>(Resource.Id.nameEditText);
+		    var fragments = new Fragment[]
+		                        {
+		                            new NameInputFragment(),
+                                    new OtherFragment()
+		                        };
+		    var titles = CharSequence.ArrayFromStringArray(new[]
+		                                                       {
+		                                                           "People",
+                                                                   "Other"
+		                                                       });
 
-            var greetingTextView = this.FindViewById<TextView>(Resource.Id.greetingTextView);
+		    var viewPager = this.FindViewById<ViewPager>(Resource.Id.viewpager);
+		    viewPager.Adapter = new TabsFragmentPagerAdapter(SupportFragmentManager, fragments, titles);
 
-            var greetingButton = this.FindViewById<Button>(Resource.Id.greetingButton);
-            greetingButton.Click += (sender, args) =>
-                {
-                    var manager = (InputMethodManager)this.GetSystemService(InputMethodService);
-                    manager.HideSoftInputFromWindow(nameEditText.WindowToken, 0);
-
-                    this._people.AddPerson(nameEditText.Text, 0, string.Empty);
-                    greetingTextView.Text = "Hello " + nameEditText.Text;
-                };
-
-            var nameListButton = this.FindViewById<Button>(Resource.Id.nameListButton);
-            nameListButton.Click += (sender, args) =>
-            {
-                var intent = new Intent(this, typeof(NameListActivity));
-                intent.PutExtra("personList", JsonConvert.SerializeObject(this._people.Persons));
-                this.StartActivity(intent);  
-            };
+            // Give the TabLayout the ViewPager
+		    var tabLayout = this.FindViewById<TabLayout>(Resource.Id.sliding_tabs);
+		    tabLayout.SetupWithViewPager(viewPager);
 
 		    var toolbar = this.FindViewById<Toolbar>(Resource.Id.toolbar);
             this.SetActionBar(toolbar);
