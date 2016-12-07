@@ -17,16 +17,24 @@ namespace HelloWorld.Droid
     using Newtonsoft.Json;
 
     [Activity(Theme = "@style/MyTheme", Label = "Name list")]
-    public class NameListActivity : ListActivity
+    public class NameListActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            // Set our view from the "main" layout resource
+            this.SetContentView(Resource.Layout.NameList);
+
             var jsonStr = this.Intent.GetStringExtra("personList");
             var personList = JsonConvert.DeserializeObject<List<Person>>(jsonStr);
-            this.ListAdapter = new NameListAdapter(this, personList);
-            // Create your application here
+
+            var listview = this.FindViewById<ListView>(Resource.Id.namelistview);
+            listview.Adapter = new NameListAdapter(this, personList);
+
+            var toolbar = this.FindViewById<Toolbar>(Resource.Id.toolbar);
+            this.SetActionBar(toolbar);
+            this.ActionBar.Title = this.GetString(Resource.String.ToolbarTitle);
         }
     }
 }

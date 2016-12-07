@@ -31,7 +31,7 @@ namespace HelloWorld.Droid
 		                                                       });
 
 		    var viewPager = this.FindViewById<ViewPager>(Resource.Id.viewpager);
-		    viewPager.Adapter = new TabsFragmentPagerAdapter(SupportFragmentManager, fragments, titles);
+		    viewPager.Adapter = new TabsFragmentPagerAdapter(this.SupportFragmentManager, fragments, titles);
 
             // Give the TabLayout the ViewPager
 		    var tabLayout = this.FindViewById<TabLayout>(Resource.Id.sliding_tabs);
@@ -39,7 +39,7 @@ namespace HelloWorld.Droid
 
 		    var toolbar = this.FindViewById<Toolbar>(Resource.Id.toolbar);
             this.SetActionBar(toolbar);
-		    this.ActionBar.Title = "My Toolbar";
+		    this.ActionBar.Title = this.GetString(Resource.String.ToolbarTitle);
 		}
     }
 }
