@@ -18,29 +18,10 @@ namespace HelloWorld.Droid
             
 			// Set our view from the "main" layout resource
 			this.SetContentView (Resource.Layout.Main);
-
-		    var fragments = new Fragment[]
-		                        {
-		                            new NameInputFragment(),
-                                    new OtherFragment()
-		                        };
-		    var titles = CharSequence.ArrayFromStringArray(new[]
-		                                                       {
-		                                                           "People",
-                                                                   "Other"
-		                                                       });
-
-		    var viewPager = this.FindViewById<ViewPager>(Resource.Id.viewpager);
-		    viewPager.Adapter = new TabsFragmentPagerAdapter(this.SupportFragmentManager, fragments, titles);
-
-            // Give the TabLayout the ViewPager
-		    var tabLayout = this.FindViewById<TabLayout>(Resource.Id.sliding_tabs);
-		    tabLayout.SetupWithViewPager(viewPager);
-
+            
 		    var toolbar = this.FindViewById<Toolbar>(Resource.Id.toolbar);
-            this.SetActionBar(toolbar);
-		    this.ActionBar.Title = this.GetString(Resource.String.ToolbarTitle);
-		}
+            ToolbarTabs.Construct(this, toolbar);
+        }
     }
 }
 

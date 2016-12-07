@@ -104,6 +104,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="TabsFragmentPagerAdapter.cs" />
+    <Compile Include="ToolbarTabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
