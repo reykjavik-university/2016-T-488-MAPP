@@ -5,6 +5,9 @@
     android:layout_height="fill_parent"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
+  <include
+      android:id="@+id/toolbar"
+      layout="@layout/toolbar" />
     <TextView
         android:text="Enter your name:"
         android:layout_width="match_parent"

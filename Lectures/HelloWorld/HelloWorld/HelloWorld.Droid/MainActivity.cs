@@ -53,7 +53,11 @@ namespace HelloWorld.Droid
                 intent.PutExtra("personList", JsonConvert.SerializeObject(this._people.Persons));
                 this.StartActivity(intent);  
             };
-        }
+
+		    var toolbar = this.FindViewById<Toolbar>(Resource.Id.toolbar);
+            this.SetActionBar(toolbar);
+		    this.ActionBar.Title = "My Toolbar";
+		}
     }
 }
 
