@@ -12,20 +12,7 @@ namespace XFHelloWorld
         public App()
         {
             // The root page of your application
-            var content = new ContentPage
-            {
-                Title = "XFHelloWorld",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            var content = new GreetingPage();
 
             MainPage = new NavigationPage(content);
         }
