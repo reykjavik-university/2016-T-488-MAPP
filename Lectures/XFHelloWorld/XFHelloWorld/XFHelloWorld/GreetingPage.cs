@@ -35,6 +35,13 @@ namespace XFHelloWorld
             FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
         };
 
+        private Button _seeNameListButton = new Button
+        {
+            Text = "See name list",
+            BorderColor = Color.Gray,
+            HorizontalOptions = LayoutOptions.Fill,
+        };
+
 
         public GreetingPage()
         {
@@ -50,12 +57,18 @@ namespace XFHelloWorld
                                        {
                                            new StackLayout { Children = { this._entryLabel, this._nameEntry, }, },
                                            this._displayNameButton,
-                                           this._displayLabel
+                                           this._displayLabel,
+                                           this._seeNameListButton
                                        }
                                };
 
             this._displayNameButton.Clicked += this.OnDisplayNameButtonClicked;
             this._nameEntry.Completed += this.OnDisplayNameButtonClicked;
+
+            this._seeNameListButton.Clicked += async (sender, args) =>
+                {
+                    await this.Navigation.PushAsync(new NameListPage());
+                };
         }
 
         private void OnDisplayNameButtonClicked(object sender, EventArgs args)
