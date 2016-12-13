@@ -8,8 +8,12 @@ using Xamarin.Forms;
 
 namespace XFHelloWorld
 {
+    using XFHelloWorld.Model;
+
     public class GreetingPage : ContentPage
     {
+        private People _people;
+
         private Label _entryLabel = new Label
         {
             HorizontalOptions = LayoutOptions.Start,
@@ -43,8 +47,10 @@ namespace XFHelloWorld
         };
 
 
-        public GreetingPage()
+        public GreetingPage(People people)
         {
+            this._people = people;
+
             this.BackgroundColor = Color.FromRgb(240, 240, 240);
             this.Title = "Hello my friend!";
 
@@ -67,7 +73,7 @@ namespace XFHelloWorld
 
             this._seeNameListButton.Clicked += async (sender, args) =>
                 {
-                    await this.Navigation.PushAsync(new NameListPage());
+                    await this.Navigation.PushAsync(new NameListPage() { BindingContext = this._people});
                 };
         }
 

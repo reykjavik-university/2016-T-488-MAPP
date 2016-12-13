@@ -7,12 +7,14 @@ using Xamarin.Forms;
 
 namespace XFHelloWorld
 {
+    using XFHelloWorld.Model;
+
     public class App : Application
     {
         public App()
         {
             // The root page of your application
-            var content = new GreetingPage();
+            var content = new GreetingPage(new People());
 
             MainPage = new NavigationPage(content);
         }
