@@ -79,6 +79,7 @@ namespace XFHelloWorld
 
         private void OnDisplayNameButtonClicked(object sender, EventArgs args)
         {
+            this._people.AddPerson(this._nameEntry.Text, 0, string.Empty);
             this._displayLabel.Text = "Hello " + this._nameEntry.Text;
             this._nameEntry.Text = string.Empty;
         }

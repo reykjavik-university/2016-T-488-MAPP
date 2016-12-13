@@ -4,5 +4,35 @@
              x:Class="XFHelloWorld.NameListPage"
              Title="Name list">
   <ListView x:Name="listview"
-            ItemsSource="{Binding Persons}"/>
+            ItemsSource="{Binding Persons}" 
+            HasUnevenRows="True" >
+    <ListView.ItemTemplate >
+      <DataTemplate>
+        <!-->TextCell Text="{Binding Name}" -->
+        <ViewCell>
+          <Grid Padding="0,5">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="{Binding Name}"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="#1f03e1"/>
+            <Label Grid.Row="1" Grid.Column="0"
+                   Text="{Binding BirthYear}"
+                   FontSize="Small"/>
+            <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"
+                   Source="{Binding ImageResource}" />
+          </Grid>
+        </ViewCell>
+        
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView >
 </ContentPage>
