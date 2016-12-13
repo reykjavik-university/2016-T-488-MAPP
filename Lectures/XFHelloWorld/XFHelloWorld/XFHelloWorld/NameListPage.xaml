@@ -5,12 +5,13 @@
              Title="Name list">
   <ListView x:Name="listview"
             ItemsSource="{Binding Persons}" 
-            HasUnevenRows="True" >
+            HasUnevenRows="True"
+            ItemSelected="Listview_OnItemSelected">
     <ListView.ItemTemplate >
       <DataTemplate>
         <!-->TextCell Text="{Binding Name}" -->
         <ViewCell>
-          <Grid Padding="0,5">
+          <Grid Padding="10,5">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
