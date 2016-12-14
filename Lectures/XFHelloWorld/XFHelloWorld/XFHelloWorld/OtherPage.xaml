@@ -2,5 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFHelloWorld.OtherPage">
-  <Label Text="The other page" VerticalOptions="Center" HorizontalOptions="Center" />
+  <Label Text="The other page"
+				  HorizontalOptions="Center" >
+    <Label.VerticalOptions>
+      <OnPlatform x:TypeArguments="LayoutOptions">
+        <OnPlatform.iOS>Start</OnPlatform.iOS>
+        <OnPlatform.Android>Start</OnPlatform.Android>
+        <OnPlatform.WinPhone>Center</OnPlatform.WinPhone>
+      </OnPlatform>
+    </Label.VerticalOptions>
+  </Label>
+  
 </ContentPage>

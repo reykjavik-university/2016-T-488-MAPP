@@ -13,6 +13,10 @@ namespace XFHelloWorld
         public NameListPage()
         {
             this.InitializeComponent();
+            if (Device.OS == TargetPlatform.Windows)
+            {
+                this.listview.BackgroundColor = Color.Aqua;
+            }
         }
 
         private void Listview_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
