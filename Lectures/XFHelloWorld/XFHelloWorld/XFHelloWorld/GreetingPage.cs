@@ -8,8 +8,12 @@ using Xamarin.Forms;
 
 namespace XFHelloWorld
 {
+    using XFHelloWorld.Model;
+
     public class GreetingPage : ContentPage
     {
+        private People _people;
+
         private Label _entryLabel = new Label
         {
             HorizontalOptions = LayoutOptions.Start,
@@ -35,9 +39,18 @@ namespace XFHelloWorld
             FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
         };
 
-
-        public GreetingPage()
+        private Button _seeNameListButton = new Button
         {
+            Text = "See name list",
+            BorderColor = Color.Gray,
+            HorizontalOptions = LayoutOptions.Fill,
+        };
+
+
+        public GreetingPage(People people)
+        {
+            this._people = people;
+
             this.BackgroundColor = Color.FromRgb(240, 240, 240);
             this.Title = "Hello my friend!";
 
@@ -50,16 +63,23 @@ namespace XFHelloWorld
                                        {
                                            new StackLayout { Children = { this._entryLabel, this._nameEntry, }, },
                                            this._displayNameButton,
-                                           this._displayLabel
+                                           this._displayLabel,
+                                           this._seeNameListButton
                                        }
                                };
 
             this._displayNameButton.Clicked += this.OnDisplayNameButtonClicked;
             this._nameEntry.Completed += this.OnDisplayNameButtonClicked;
+
+            this._seeNameListButton.Clicked += async (sender, args) =>
+                {
+                    await this.Navigation.PushAsync(new NameListPage() { BindingContext = this._people});
+                };
         }
 
         private void OnDisplayNameButtonClicked(object sender, EventArgs args)
         {
+            this._people.AddPerson(this._nameEntry.Text, 0, string.Empty);
             this._displayLabel.Text = "Hello " + this._nameEntry.Text;
             this._nameEntry.Text = string.Empty;
         }

@@ -37,6 +37,14 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="GreetingPage.cs" />
+    <Compile Include="Model\People.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="NameListPage.xaml.cs">
+      <DependentUpon>NameListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OtherPage.xaml.cs">
+      <DependentUpon>OtherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +63,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NameListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\FamousPeople\abraham_lincoln.png" />
+    <EmbeddedResource Include="Images\FamousPeople\bill_gates.png" />
+    <EmbeddedResource Include="Images\FamousPeople\charles_darwin.png" />
+    <EmbeddedResource Include="Images\FamousPeople\charles_de_gaulle.png" />
+    <EmbeddedResource Include="Images\FamousPeople\christopher_columbus.png" />
+    <EmbeddedResource Include="Images\FamousPeople\george_orwell.png" />
+    <EmbeddedResource Include="Images\FamousPeople\john_kennedy.png" />
+    <EmbeddedResource Include="Images\FamousPeople\mahatma_gandhi.png" />
+    <EmbeddedResource Include="Images\FamousPeople\margaret_thatcher.png" />
+    <EmbeddedResource Include="Images\FamousPeople\marilyn_monroe.png" />
+    <EmbeddedResource Include="Images\FamousPeople\martin_luther_king.png" />
+    <EmbeddedResource Include="Images\FamousPeople\mother_teresa.png" />
+    <EmbeddedResource Include="Images\FamousPeople\muhammad_ali.png" />
+    <EmbeddedResource Include="Images\FamousPeople\nelson_mandela.png" />
+    <EmbeddedResource Include="Images\FamousPeople\winston_churchill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="OtherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.175\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
