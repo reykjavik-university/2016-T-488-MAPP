@@ -14,9 +14,19 @@ namespace XFHelloWorld
         public App()
         {
             // The root page of your application
-            var content = new GreetingPage(new People());
+            var greetingPage = new GreetingPage(new People());
+            var greetingNavigationPage = new NavigationPage(greetingPage);
+            greetingNavigationPage.Title = "People";
 
-            MainPage = new NavigationPage(content);
+            var otherPage = new OtherPage();
+            var otherNavigationPage = new NavigationPage(otherPage);
+            otherNavigationPage.Title = "Other";
+
+            var tabbedPage = new TabbedPage();
+            tabbedPage.Children.Add(greetingNavigationPage);
+            tabbedPage.Children.Add(otherNavigationPage);
+            
+            this.MainPage = tabbedPage;
         }
 
         protected override void OnStart()
